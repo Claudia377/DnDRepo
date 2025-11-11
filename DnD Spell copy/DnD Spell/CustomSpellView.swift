@@ -22,7 +22,6 @@ struct CustomSpellView: View {
     @State private var desc = ""
     
     @Environment(\.modelContext) var modelContext
-    @Query var spells: [Spell]
     
     var body: some View {
         NavigationView {
@@ -67,6 +66,8 @@ struct CustomSpellView: View {
                     if(!name.isEmpty && !level.isEmpty && !_class.isEmpty && !castingTime.isEmpty && !range.isEmpty && !duration.isEmpty && !desc.isEmpty) {
                         let customSpell = Spell(name: name, _class: _class, range: range, level: Int(level)!, desc: desc, duration: duration, castingTime: castingTime)
                         modelContext.insert(customSpell)
+                        //salvo il contesto
+                        try? modelContext.save()
                     }
                     else {
                         showAlert = true

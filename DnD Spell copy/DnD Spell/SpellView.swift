@@ -13,10 +13,16 @@ struct SpellView: View {
     var spellModel: SpellModel = SpellModel()
     @State var searchText: String = ""
     
+    @Environment(\.modelContext) var modelContext
+    @Query var customSpells: [Spell]
+    
     var body: some View {
         NavigationStack {
             List {
                 ForEach(spellModel.spells) { spell in
+                    Text(spell.name)
+                }
+                ForEach(customSpells) { spell in
                     Text(spell.name)
                 }
             }.navigationTitle("Spells")
