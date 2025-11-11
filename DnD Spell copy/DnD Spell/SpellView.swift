@@ -20,10 +20,18 @@ struct SpellView: View {
         NavigationStack {
             List {
                 ForEach(spellModel.spells) { spell in
-                    Text(spell.name)
+                    NavigationLink {
+                        DescriptionView()
+                    } label: {
+                        Text(spell.name)
+                    }
                 }
                 ForEach(customSpells) { spell in
-                    Text(spell.name)
+                    NavigationLink {
+                        DescriptionView()
+                    } label: {
+                        Text(spell.name)
+                    }
                 }
             }.navigationTitle("Spells")
                 .toolbar {
