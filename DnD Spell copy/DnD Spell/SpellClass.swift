@@ -19,8 +19,8 @@ class Spell: Identifiable {
     var duration: String
     var castingTime: String
     
-    init(id: UUID = UUID(), name: String, _class: String, range: String, level: Int, desc: String, duration: String, castingTime: String) {
-        self.id = id
+    init(name: String, _class: String, range: String, level: Int, desc: String, duration: String, castingTime: String) {
+       
         self.name = name
         self._class = _class
         self.range = range
