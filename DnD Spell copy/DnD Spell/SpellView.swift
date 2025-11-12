@@ -39,7 +39,10 @@ struct SpellView: View {
                     Text("Custom Spells").bold().foregroundStyle(Color.brown)
                 }
             }.navigationTitle("Spells")
+            
+                .searchable(text: $searchText, placement: .toolbar)
                 .toolbar {
+                    
                     ToolbarItem(placement: .topBarTrailing) {
                         HStack {
                             Button("Filter", systemImage: "slider.horizontal.3") {
@@ -52,8 +55,11 @@ struct SpellView: View {
                             
                         }
                     }
+                    
+                                        
+                    
                 }
-        }//.searchable(text: $searchText, prompt: "Search by name")
+        }
         
     }
     

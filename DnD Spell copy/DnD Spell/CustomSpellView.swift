@@ -22,6 +22,7 @@ struct CustomSpellView: View {
     @State private var desc = ""
     
     @Environment(\.modelContext) var modelContext
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         NavigationView {
@@ -68,6 +69,8 @@ struct CustomSpellView: View {
                         modelContext.insert(customSpell)
                         //salvo il contesto
                         try? modelContext.save()
+                        
+                        dismiss()
                     }
                     else {
                         showAlert = true
