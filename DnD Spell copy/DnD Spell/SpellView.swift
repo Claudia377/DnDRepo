@@ -19,19 +19,24 @@ struct SpellView: View {
     var body: some View {
         NavigationStack {
             List {
-                ForEach(spellModel.spells) { spell in
-                    NavigationLink {
-                        DescriptionView()
-                    } label: {
-                        Text(spell.name)
+                Section {
+                    ForEach(spellModel.spells) { spell in
+                        NavigationLink(destination: DescriptionView(spell: spell)) {
+                            Text(spell.name).bold()
+                        }
                     }
+                } header: {
+                    Text("5e Spells").bold().foregroundStyle(Color.brown)
                 }
-                ForEach(customSpells) { spell in
-                    NavigationLink {
-                        DescriptionView()
-                    } label: {
-                        Text(spell.name)
-                    }
+                
+                Section {
+                    ForEach(customSpells) { spell in
+                        NavigationLink(destination: DescriptionView(spell: spell)) {
+                            Text(spell.name)
+                        }
+                    }.onDelete { indexSet in delete(at: indexSet) }
+                }header: {
+                    Text("Custom Spells").bold().foregroundStyle(Color.brown)
                 }
             }.navigationTitle("Spells")
                 .toolbar {
@@ -50,6 +55,13 @@ struct SpellView: View {
                 }
         }//.searchable(text: $searchText, prompt: "Search by name")
         
+    }
+    
+    func delete (at offset: IndexSet) {
+        for index in offset {
+            let spell = customSpells[index]
+            modelContext.delete(spell)
+        }
     }
 }
 
