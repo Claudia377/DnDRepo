@@ -14,11 +14,38 @@ struct DescriptionView: View {
         NavigationView {
             VStack(alignment: .leading) {
                 Text(spell.name).bold().font(.title).foregroundStyle(Color.brown)
-                Text("Level: ").bold() + Text("\(spell.level)")
-                Text("Casting Time: ").bold() + Text(spell.castingTime)
-                Text("Range: ").bold() + Text(spell.range)
-                Text("Duration: ").bold() + Text(spell.duration)
-                Text("Class: ").bold() + Text(spell._class)
+                Text("")
+                
+                HStack {
+                    Text("Level: ").bold()
+                    Text("\(spell.level)")
+                }
+                
+                HStack {
+                    Text("Level: ").bold()
+                    Text("\(spell.level)")
+                }
+                
+                HStack {
+                    Text("Casting Time: ").bold()
+                    Text(spell.castingTime)
+                }
+                
+                HStack {
+                    Text("Range: ").bold()
+                    Text(spell.range)
+                }
+                
+                HStack {
+                    Text("Duration: ").bold()
+                    Text(spell.duration)
+                }
+                
+                HStack {
+                    Text("Class: ").bold()
+                    Text(spell._class)
+                }
+                
                 Text("")
                 Text(spell.desc)
             }.padding()

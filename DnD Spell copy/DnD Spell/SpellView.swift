@@ -13,6 +13,12 @@ struct SpellView: View {
     var spellModel: SpellModel = SpellModel()
     @State var searchText: String = ""
     
+    @State var filterLevel: Int = 20
+    @State var filterDuration: String = ""
+    @State var filterCastingTime: String = ""
+    @State var filterClass: String = ""
+    @State var filterRange: String = ""
+    
     @Environment(\.modelContext) var modelContext
     @Query var customSpells: [Spell]
     
@@ -21,8 +27,18 @@ struct SpellView: View {
             List {
                 Section {
                     ForEach(spellModel.spells) { spell in
-                        NavigationLink(destination: DescriptionView(spell: spell)) {
-                            Text(spell.name).bold()
+                        if(filterLevel == 20) {
+                            NavigationLink(destination: DescriptionView(spell: spell)) {
+                                Text(spell.name).bold()
+                            }
+                        }
+                        else {
+                            if(spell.level == filterLevel) {
+                                
+                                NavigationLink(destination: DescriptionView(spell: spell)) {
+                                    Text(spell.name).bold()
+                                }
+                            }
                         }
                     }
                 } header: {
@@ -42,22 +58,22 @@ struct SpellView: View {
             
                 .searchable(text: $searchText, placement: .toolbar)
                 .toolbar {
-                    
                     ToolbarItem(placement: .topBarTrailing) {
                         HStack {
-                            Button("Filter", systemImage: "slider.horizontal.3") {
+                            NavigationLink {
+                                FilterView(level: $filterLevel, _class: $filterClass, castingTime: $filterRange, range: $filterDuration, duration: $filterCastingTime)
+                            }label: {
+                                Label("Filter", systemImage: "slider.horizontal.3")
                             }
+                            
                             NavigationLink {
                                 CustomSpellView()
                             }label: {
                                 Label("Add", systemImage: "plus.circle.fill")
                             }
-                            
                         }
                     }
-                    
-                                        
-                    
+ 
                 }
         }
         
