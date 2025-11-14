@@ -11,15 +11,10 @@ struct DescriptionView: View {
     var spell: Spell
     
     var body: some View {
-        NavigationView {
+        HStack{
             VStack(alignment: .leading) {
                 Text(spell.name).bold().font(.title).foregroundStyle(Color.brown)
                 Text("")
-                
-                HStack {
-                    Text("Level: ").bold()
-                    Text("\(spell.level)")
-                }
                 
                 HStack {
                     Text("Level: ").bold()
@@ -49,6 +44,7 @@ struct DescriptionView: View {
                 Text("")
                 Text(spell.desc)
             }.padding()
+            Spacer()
         }
     }
 }

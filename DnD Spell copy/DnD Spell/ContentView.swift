@@ -10,16 +10,21 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         TabView {
-            Tab("Character", systemImage: "person.fill") {
-            }
-            
             Tab("Spells", systemImage: "wand.and.sparkles.inverse") {
                 SpellView()
             }
 
+            Tab("Character", systemImage: "person.fill") {
+            }
+            
             Tab("Setting", systemImage: "gearshape.fill") {
             }
+            
+            Tab(role: .search) {
+                SpellView()
+            }
         }.accentColor(.brown)
+        
     }
 }
 

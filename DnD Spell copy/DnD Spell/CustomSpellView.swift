@@ -75,7 +75,8 @@ struct CustomSpellView: View {
                     else {
                         showAlert = true
                     }
-                }.alert("Empty entries", isPresented: $showAlert) {
+                }.accentColor(Color.brown)
+                .alert("Empty entries", isPresented: $showAlert) {
                     Button("OK", role: .cancel) {}
                 } message: {
                     Text("Remember to fill every ones of them.")

@@ -20,6 +20,8 @@ struct FilterView: View {
     @Binding var range: String
     @Binding var duration: String
     
+    @Environment(\.dismiss) private var dismiss
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -29,57 +31,43 @@ struct FilterView: View {
                     castingTime = ""
                     range = ""
                     duration = ""
-                }
+                }.padding().accentColor(Color.brown).font(.title2)
                 
-                HStack {
-                    Text("Level").padding()
-                    Spacer()
-                    Picker("Level", selection: $level) {
-                        ForEach(levels, id: \.self) { level in
-                            Text("\(level)")
-                        }
-                    }
-                }.border(Color.gray, width: 2).padding()
-                
-                HStack {
-                    Text("Class").padding()
-                    Spacer()
-                    Picker("Class", selection: $_class) {
-                        ForEach(classes, id: \.self) { _class in
-                            Text("\(_class)")
-                        }
-                    }
-                }.border(Color.gray, width: 2).padding()
-                
-                HStack {
-                    Text("Action").padding()
-                    Spacer()
-                    Picker("Action", selection: $castingTime) {
-                        ForEach(actions, id: \.self) { action in
-                            Text("\(action)")
-                        }
-                    }
-                }.border(Color.gray, width: 2).padding()
-                
-                HStack {
-                    Text("Duration").padding()
-                    Spacer()
-                    Picker("Duration", selection: $duration) {
-                        ForEach(durations, id: \.self) { duration in
-                            Text("\(duration)")
-                        }
-                    }
-                }.border(Color.gray, width: 2).padding()
-                
-                HStack {
-                    Text("Range").padding()
-                    Spacer()
-                    Picker("Range", selection: $range) {
-                        ForEach(ranges, id: \.self) { range in
-                            Text("\(range)")
-                        }
-                    }
-                }.border(Color.gray, width: 2).padding()
+                Form {
+                        Picker("Level", selection: $level) {
+                            ForEach(levels, id: \.self) { level in
+                                Text("\(level)")
+                            }
+                        }.padding()
+
+                        Picker("Class", selection: $_class) {
+                            ForEach(classes, id: \.self) { _class in
+                                Text("\(_class)")
+                            }
+                        }.padding()
+                    
+                        Picker("Action", selection: $castingTime) {
+                            ForEach(actions, id: \.self) { action in
+                                Text("\(action)")
+                            }
+                        }.padding()
+
+                        Picker("Duration", selection: $duration) {
+                            ForEach(durations, id: \.self) { duration in
+                                Text("\(duration)")
+                            }
+                        }.padding()
+                    
+                        Picker("Range", selection: $range) {
+                            ForEach(ranges, id: \.self) { range in
+                                Text("\(range)")
+                            }
+                        }.padding()
+                }.scrollContentBackground(.hidden)
+
+                Button("Apply") {
+                    dismiss()
+                }.accentColor(Color.brown).font(.title2).padding()
             }
         }
     }

@@ -27,36 +27,42 @@ struct SpellView: View {
             List {
                 Section {
                     ForEach(spellModel.spells) { spell in
-                        if(filterLevel == 20) {
+                        if((spell.level == filterLevel || filterLevel == 20)
+                           && (spell._class == filterClass || filterClass == "")
+                           && (spell.castingTime == filterCastingTime || filterCastingTime == "")
+                           && (spell.duration == filterDuration || filterDuration == "")
+                           && (spell.range == filterRange || filterRange == "")) {
                             NavigationLink(destination: DescriptionView(spell: spell)) {
-                                Text(spell.name).bold()
-                            }
-                        }
-                        else {
-                            if(spell.level == filterLevel) {
-                                
-                                NavigationLink(destination: DescriptionView(spell: spell)) {
-                                    Text(spell.name).bold()
+                                VStack(alignment: .leading) {
+                                    Text(spell.name).font(.title2).bold()
+                                    Text("Level: \(spell.level)")
                                 }
                             }
                         }
                     }
                 } header: {
-                    Text("5e Spells").bold().foregroundStyle(Color.brown)
+                    Text("5e Spells").foregroundStyle(Color.brown).font(.system(size: 25, weight: .bold))
                 }
                 
                 Section {
                     ForEach(customSpells) { spell in
-                        NavigationLink(destination: DescriptionView(spell: spell)) {
-                            Text(spell.name)
+                        if((spell.level == filterLevel || filterLevel == 20)
+                           && (spell._class == filterClass || filterClass == "")
+                           && (spell.castingTime == filterCastingTime || filterCastingTime == "")
+                           && (spell.duration == filterDuration || filterDuration == "")
+                           && (spell.range == filterRange || filterRange == "")) {
+                            NavigationLink(destination: DescriptionView(spell: spell)) {
+                                VStack(alignment: .leading) {
+                                    Text(spell.name).font(.title).bold()
+                                    Text("Level: \(spell.level)")
+                                }
+                            }
                         }
                     }.onDelete { indexSet in delete(at: indexSet) }
                 }header: {
-                    Text("Custom Spells").bold().foregroundStyle(Color.brown)
+                    Text("Custom Spells").foregroundStyle(Color.brown).font(.system(size: 25, weight: .bold))
                 }
             }.navigationTitle("Spells")
-            
-                .searchable(text: $searchText, placement: .toolbar)
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) {
                         HStack {
