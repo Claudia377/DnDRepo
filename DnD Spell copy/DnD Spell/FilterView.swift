@@ -34,37 +34,69 @@ struct FilterView: View {
                 }.padding().accentColor(Color.brown).font(.title2)
                 
                 Form {
+                    HStack {
                         Picker("Level", selection: $level) {
                             ForEach(levels, id: \.self) { level in
                                 Text("\(level)")
                             }
-                        }.padding()
-
+                        }.padding().pickerStyle(.menu).accentColor(Color.brown)
+                        
+                        Spacer()
+                        
+                        Button("", systemImage: "x.circle") {
+                            level = 20
+                        }.accentColor(Color.brown).font(.title2)
+                    }.contentShape(Rectangle())
+                    
+                    HStack {
                         Picker("Class", selection: $_class) {
                             ForEach(classes, id: \.self) { _class in
                                 Text("\(_class)")
                             }
-                        }.padding()
+                        }.padding().pickerStyle(.menu).accentColor(Color.brown)
+                        
+                        Button("", systemImage: "x.circle") {
+                            _class = ""
+                        }.accentColor(Color.brown).font(.title2)
+                    }
                     
+                    HStack{
                         Picker("Action", selection: $castingTime) {
                             ForEach(actions, id: \.self) { action in
                                 Text("\(action)")
                             }
-                        }.padding()
-
+                        }.padding().pickerStyle(.menu).accentColor(Color.brown)
+                        
+                        Button("", systemImage: "x.circle") {
+                            castingTime = ""
+                        }.accentColor(Color.brown).font(.title2)
+                    }
+                    
+                    HStack{
                         Picker("Duration", selection: $duration) {
                             ForEach(durations, id: \.self) { duration in
                                 Text("\(duration)")
                             }
-                        }.padding()
+                        }.padding().pickerStyle(.menu).accentColor(Color.brown)
+                        
+                        Button("", systemImage: "x.circle") {
+                            range = ""
+                        }.accentColor(Color.brown).font(.title2)
+                    }
                     
+                    HStack {
                         Picker("Range", selection: $range) {
                             ForEach(ranges, id: \.self) { range in
                                 Text("\(range)")
                             }
-                        }.padding()
+                        }.padding().pickerStyle(.menu).accentColor(Color.brown)
+                        
+                        Button("", systemImage: "x.circle") {
+                            duration = ""
+                        }.accentColor(Color.brown).font(.title2)
+                    }
                 }.scrollContentBackground(.hidden)
-
+                
                 Button("Apply") {
                     dismiss()
                 }.accentColor(Color.brown).font(.title2).padding()

@@ -67,7 +67,7 @@ struct SpellView: View {
                     ToolbarItem(placement: .topBarTrailing) {
                         HStack {
                             NavigationLink {
-                                FilterView(level: $filterLevel, _class: $filterClass, castingTime: $filterRange, range: $filterDuration, duration: $filterCastingTime)
+                                FilterView(level: $filterLevel, _class: $filterClass, castingTime: $filterCastingTime, range: $filterRange, duration: $filterDuration)
                             }label: {
                                 Label("Filter", systemImage: "slider.horizontal.3")
                             }

@@ -45,6 +45,12 @@ struct DescriptionView: View {
                 Text(spell.desc)
             }.padding()
             Spacer()
+        }.toolbar {
+            NavigationLink {
+                CustomSpellView()
+            } label: {
+                Label ("Edit", systemImage: "pencil.line")
+            }
         }
     }
 }
