@@ -37,9 +37,7 @@ struct CustomSpellView: View {
                             Text(level)
                         }
                     }
-                }
-                
-                Section {
+                    
                     Picker("Class", selection: $_class) {
                         ForEach(classes, id: \.self) { _class in
                             Text(_class)
@@ -48,21 +46,15 @@ struct CustomSpellView: View {
                 }
                 
                 Section {
-                     TextField("Casting Time", text: $castingTime)
-                }
-                
-                Section {
+                    TextField("Casting Time", text: $castingTime)
+                    
                     TextField("Range", text: $range)
-                }
-                
-                Section {
+                    
                     TextField("Duration", text: $duration)
-                }
-                
-                Section {
+                    
                     TextField("Description", text: $desc)
                 }
-                
+
                 Button("Save") {
                     if(!name.isEmpty && !level.isEmpty && !_class.isEmpty && !castingTime.isEmpty && !range.isEmpty && !duration.isEmpty && !desc.isEmpty) {
                         let customSpell = Spell(name: name, _class: _class, range: range, level: Int(level)!, desc: desc, duration: duration, castingTime: castingTime)

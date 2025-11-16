@@ -80,7 +80,7 @@ struct FilterView: View {
                         }.padding().pickerStyle(.menu).accentColor(Color.brown)
                         
                         Button("", systemImage: "x.circle") {
-                            range = ""
+                            duration = ""
                         }.accentColor(Color.brown).font(.title2)
                     }
                     
@@ -92,7 +92,7 @@ struct FilterView: View {
                         }.padding().pickerStyle(.menu).accentColor(Color.brown)
                         
                         Button("", systemImage: "x.circle") {
-                            duration = ""
+                            range = ""
                         }.accentColor(Color.brown).font(.title2)
                     }
                 }.scrollContentBackground(.hidden)
