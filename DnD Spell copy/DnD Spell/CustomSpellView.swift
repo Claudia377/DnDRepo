@@ -68,10 +68,10 @@ struct CustomSpellView: View {
                         showAlert = true
                     }
                 }.accentColor(Color.brown)
-                .alert("Empty entries", isPresented: $showAlert) {
+                .alert("Empty entries!", isPresented: $showAlert) {
                     Button("OK", role: .cancel) {}
                 } message: {
-                    Text("Remember to fill every ones of them.")
+                    Text("Please make sure to fill in all of them.")
                 }
             }.navigationTitle("Custom Spell")
         }

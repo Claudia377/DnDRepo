@@ -45,8 +45,8 @@ struct FilterView: View {
                         
                         Button("", systemImage: "x.circle") {
                             level = 20
-                        }.accentColor(Color.brown).font(.title2)
-                    }.contentShape(Rectangle())
+                        }.accentColor(Color.brown)
+                    }
                     
                     HStack {
                         Picker("Class", selection: $_class) {
@@ -57,7 +57,7 @@ struct FilterView: View {
                         
                         Button("", systemImage: "x.circle") {
                             _class = ""
-                        }.accentColor(Color.brown).font(.title2)
+                        }.accentColor(Color.brown)
                     }
                     
                     HStack{
@@ -69,7 +69,7 @@ struct FilterView: View {
                         
                         Button("", systemImage: "x.circle") {
                             castingTime = ""
-                        }.accentColor(Color.brown).font(.title2)
+                        }.accentColor(Color.brown)
                     }
                     
                     HStack{
@@ -81,7 +81,7 @@ struct FilterView: View {
                         
                         Button("", systemImage: "x.circle") {
                             duration = ""
-                        }.accentColor(Color.brown).font(.title2)
+                        }.accentColor(Color.brown)
                     }
                     
                     HStack {
